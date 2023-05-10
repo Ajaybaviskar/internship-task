@@ -11,16 +11,41 @@
 
 <body>
     <section>
-        <form action="">
+        <form name="submit-to-google-sheet">
             <h1>Subscribe to our newsletter</h1>
             <p>Signup for our weekly newsletter to get the latest news, updates and amazing offers delivered directly in
                 your inbox.</p>
             <div class="hero">
-                <input type="email" name="email" placeholder="Enter your email">
+                <input type="email" name="Email" placeholder="Enter your email">
                 <button class="btn">Subscribe</button>
             </div>
+            <span id="msg"></span>
         </form>
+
     </section>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyd0hOXCvM_IDdnF0ldHrUO8M9yoih7lekf8k6KNWWI5B2BY97pUEn6GNdce809DZCn/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg");
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = "Thank You For Subscribing !"
+                    setTimeout(function () {
+                        msg.innerHTML = ""
+
+                    }, 5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+        // console.log(msg);
+        console.log("aa");
+    </script>
+
 </body>
 
 </html>

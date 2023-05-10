@@ -42,11 +42,16 @@ input{
     font-size: 15px;
 }
 .btn{
-    background-color: rgb(237, 93, 68);
+    background-color: #ff5361;
     padding: 10px 40px;
     color: white;
     cursor: pointer;
     font-size: 17px;
     border: none;
     
+}
+span{
+    color: green;
+    margin-top: 10px;
+    display: block;
 }
